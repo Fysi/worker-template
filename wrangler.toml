@@ -1,7 +1,7 @@
-name = "helloworld"
-type = "javascript"
+name = "shorturl"
+type = "webpack"
 
-account_id = ""
-workers_dev = true
-route = ""
-zone_id = ""
+account_id = "09d23dcbdc7b47727e32d32ee3d2e293"
+workers_dev = false
+route = "*.theashtons.uk/*"
+zone_id = "a6043cef4b9a7481cec533af42217d8b"
