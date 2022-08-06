@@ -1,12 +1,13 @@
+// Copyright Patrick Reader 2020, Licensed under the MIT Licence https://github.com/pxeger/url-shortener/blob/master/LICENCE.txt
+const urls = require('./urls.json');
+
 addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
+  event.respondWith(handleRequest(event.request));
 })
-/**
- * Respond with hello worker text
- * @param {Request} request
- */
+
 async function handleRequest(request) {
-  return new Response('Hello worker!', {
-    headers: { 'content-type': 'text/plain' },
-  })
-}
+  const path = new URL(request.url).pathname.substring(1);
+  console.log(request.headers['user-agent'], new Date(), path);
+  if (path in urls) return new Response(null, {status: 308, headers: {location: urls[path]}});
+  else return new Response('404 not found?', {status: 404});
+}   
